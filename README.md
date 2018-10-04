@@ -33,5 +33,9 @@ The report will be generated in **./build/behat/**
             print_outp: true
             loop_break: true
 ```
+#### Add the logo of your company
+Modify the **templates/report.html.twig** on line 26 and add the logo 
+of your company so it can be added to the report too!!
 
-
+#### Example Report:
+![Report](examples/report_1.png)
