@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<testsuites>
+    {% for suite in suites %}
+        <testsuite>
+            {% for feature in suite.features %}
+                <testfeature id="{{ feature.id }}" name="{{ feature.title }}"
+                             status="{% if feature.failedScenarios > 0 %}failed{% elseif feature.pendingScenarios > 0 %}pending{% else %}passed{% endif %}">
+                    {% for scenario in feature.scenarios %}
+                        <testscenario id="{{ scenario.id }}" name="{{ scenario.title }}"
+                                      tags="{{ scenario.tags|join(',') }}"
+                                      status="{% if scenario.isPassed %}passed{% elseif scenario.isPending %}pending{% else %}failed{% endif %}">
+                            {% for step in scenario.steps %}
+                                {% if step.exception %}
+                                    <teststep name="{{ step.keyword }}: {{ step.text }}"
+                                              status="{% if step.isPassed %}passed{% elseif step.isSkipped %}skipped{% elseif step.isPending %}pending{% else %}failed{% endif %}">
+                                        <failure message="{{ step.exception }}"/>
+                                    </teststep>
+                                {% else %}
+                                    <teststep name="{{ step.keyword }}: {{ step.text }}"
+                                              status="{% if step.isPassed %}passed{% elseif step.isSkipped %}skipped{% elseif step.isPending %}pending{% else %}failed{% endif %}"/>
+                                {% endif %}
+                            {% endfor %}
+                        </testscenario>
+                    {% endfor %}
+                </testfeature>
+            {% endfor %}
+        </testsuite>
+    {% endfor %}
+</testsuites>

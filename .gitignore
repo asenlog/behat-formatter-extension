@@ -1,0 +1,5 @@
+.idea/
+.DS_Store
+features/
+vendor/
+build/

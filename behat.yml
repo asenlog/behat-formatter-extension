@@ -1,0 +1,15 @@
+default:
+    formatters:
+        html:
+            output_path: "%paths.base%/build"
+        pretty: ~
+
+    extensions:
+        BehatHTMLFormatter\BehatHTMLFormatterExtension:
+            name: html
+            renderer: Report,Documentation
+            file_names: report,documentation
+            print_args: true
+            print_outp: true
+            loop_break: true
+            screenshot_support: false
