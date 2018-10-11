@@ -1,18 +1,18 @@
-## BehatHtmlFormatterPlugin
+## Behat - Custom Formatter Extension
 
 Behat 3 extension for generating HTML reports / Documentation Reports and Testrail compatible XML reports.
 
 ### Prerequisites
 This extension requires:
 
-* PHP 5.3.x or higher
+* PHP 7.1 or higher
 * Behat 3.x or higher
 
 ## Installation
 
 #### Install Plugin through composer:
 ```bash
-$ composer require --dev BehatHTMLFormatter/BehatHTMLFormatter
+$ composer require --dev behat/formatter-extension
 ```
 
 #### Modifying the settings in the `behat.yml` file
@@ -25,7 +25,7 @@ The report will be generated in **./build/behat/**
           output_path: "%paths.base%/build/behat/"
     
     extensions:
-        BehatHTMLFormatter\BehatHTMLFormatterExtension:
+        App\CustomFormatterExtension:
             name: html
             renderer: Report,Testrail
             file_names: report,testrail
