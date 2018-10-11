@@ -8,27 +8,21 @@
  * Time: 12:50
  */
 
-namespace BehatHTMLFormatter\Renderer;
+namespace App\Renderer;
 
-use BehatHTMLFormatter\Formatter\BehatHTMLFormatter;
+use App\Formatter\CustomFormatter;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
 
-/**
- * Twig renderer for Behat report
- *
- * Class TestrailRenderer
- * @package BehatHTMLFormatter\Renderer
- */
-class TestrailRenderer
+class TestrailRenderer implements RendererInterface
 {
     /**
      * Renders before an exercise.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeExercise(BehatHTMLFormatter $obj)
+    public function renderBeforeExercise(CustomFormatter $obj): string
     {
         return '';
     }
@@ -36,12 +30,12 @@ class TestrailRenderer
     /**
      * Renders after an exercise.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      *
      * @throws \Exception
      */
-    public function renderAfterExercise(BehatHTMLFormatter $obj)
+    public function renderAfterExercise(CustomFormatter $obj): string
     {
 
         $templatePath = dirname(__FILE__) . '/../../templates';
@@ -61,10 +55,10 @@ class TestrailRenderer
     /**
      * Renders before a suite.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeSuite(BehatHTMLFormatter $obj)
+    public function renderBeforeSuite(CustomFormatter $obj): string
     {
         return '';
     }
@@ -72,10 +66,10 @@ class TestrailRenderer
     /**
      * Renders after a suite.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterSuite(BehatHTMLFormatter $obj)
+    public function renderAfterSuite(CustomFormatter $obj): string
     {
         return '';
     }
@@ -83,10 +77,10 @@ class TestrailRenderer
     /**
      * Renders before a feature.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeFeature(BehatHTMLFormatter $obj)
+    public function renderBeforeFeature(CustomFormatter $obj): string
     {
         return '';
     }
@@ -94,10 +88,10 @@ class TestrailRenderer
     /**
      * Renders after a feature.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterFeature(BehatHTMLFormatter $obj)
+    public function renderAfterFeature(CustomFormatter $obj): string
     {
         return '';
     }
@@ -105,10 +99,10 @@ class TestrailRenderer
     /**
      * Renders before a scenario.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeScenario(BehatHTMLFormatter $obj)
+    public function renderBeforeScenario(CustomFormatter $obj): string
     {
         return '';
     }
@@ -116,10 +110,10 @@ class TestrailRenderer
     /**
      * Renders after a scenario.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterScenario(BehatHTMLFormatter $obj)
+    public function renderAfterScenario(CustomFormatter $obj): string
     {
         return '';
     }
@@ -127,10 +121,10 @@ class TestrailRenderer
     /**
      * Renders before an outline.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeOutline(BehatHTMLFormatter $obj)
+    public function renderBeforeOutline(CustomFormatter $obj): string
     {
         return '';
     }
@@ -138,10 +132,10 @@ class TestrailRenderer
     /**
      * Renders after an outline.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterOutline(BehatHTMLFormatter $obj)
+    public function renderAfterOutline(CustomFormatter $obj): string
     {
         return '';
     }
@@ -149,10 +143,10 @@ class TestrailRenderer
     /**
      * Renders before a step.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeStep(BehatHTMLFormatter $obj)
+    public function renderBeforeStep(CustomFormatter $obj): string
     {
         return '';
     }
@@ -160,10 +154,10 @@ class TestrailRenderer
     /**
      * Renders after a step.
      *
-     * @param BehatHTMLFormatter $obj
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterStep(BehatHTMLFormatter $obj)
+    public function renderAfterStep(CustomFormatter $obj): string
     {
         return '';
     }
@@ -173,7 +167,7 @@ class TestrailRenderer
      *
      * @return string  : HTML generated
      */
-    public function getCSS()
+    public function getCSS(): string
     {
         return '';
     }
@@ -183,7 +177,7 @@ class TestrailRenderer
      *
      * @return string  : HTML generated
      */
-    public function getJS()
+    public function getJS(): string
     {
         return '';
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace BehatHTMLFormatter;
+namespace App;
 
 use Behat\Testwork\ServiceContainer\Extension as ExtensionInterface;
 use Behat\Testwork\ServiceContainer\ExtensionManager;
@@ -8,11 +8,7 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-/**
- * Class BehatHTMLFormatterExtension
- * @package Features\Formatter
- */
-class BehatHTMLFormatterExtension implements ExtensionInterface
+class CustomFormatterExtension implements ExtensionInterface
 {
     /**
      * You can modify the container here before it is dumped to PHP code.
@@ -30,7 +26,7 @@ class BehatHTMLFormatterExtension implements ExtensionInterface
      *
      * @return string
      */
-    public function getConfigKey()
+    public function getConfigKey(): string
     {
         return "behatreporting";
     }
@@ -75,7 +71,7 @@ class BehatHTMLFormatterExtension implements ExtensionInterface
      */
     public function load(ContainerBuilder $container, array $config)
     {
-        $definition = new Definition("BehatHTMLFormatter\\Formatter\\BehatHTMLFormatter");
+        $definition = new Definition("App\\Formatter\\CustomFormatter");
         $definition->addArgument($config['name']);
         $definition->addArgument($config['renderer']);
         $definition->addArgument($config['file_names']);
@@ -96,7 +92,7 @@ class BehatHTMLFormatterExtension implements ExtensionInterface
      * @return array
      * @throws \Exception
      */
-    private function getCliArgs(ContainerBuilder $container)
+    private function getCliArgs(ContainerBuilder $container): ?array
     {
         $keyValues = array();
         $cliInput = $container->get('cli.input')->__toString();

@@ -6,7 +6,7 @@
  * Time: 12:50
  */
 
-namespace BehatHTMLFormatter\Classes;
+namespace App\Models;
 
 class Suite
 {

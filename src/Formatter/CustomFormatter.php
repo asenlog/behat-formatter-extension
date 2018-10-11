@@ -6,7 +6,7 @@
  * Time: 12:50
  */
 
-namespace BehatHTMLFormatter\Formatter;
+namespace App\Formatter;
 
 use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
 use Behat\Behat\EventDispatcher\Event\AfterOutlineTested;
@@ -27,18 +27,18 @@ use Behat\Testwork\EventDispatcher\Event\BeforeExerciseCompleted;
 use Behat\Testwork\EventDispatcher\Event\BeforeSuiteTested;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Printer\OutputPrinter;
-use BehatHTMLFormatter\Classes\Feature;
-use BehatHTMLFormatter\Classes\Scenario;
-use BehatHTMLFormatter\Classes\Step;
-use BehatHTMLFormatter\Classes\Suite;
-use BehatHTMLFormatter\Printer\FileOutputPrinter;
-use BehatHTMLFormatter\Renderer\BaseRenderer;
+use App\Models\Feature;
+use App\Models\Scenario;
+use App\Models\Step;
+use App\Models\Suite;
+use App\Printer\FileOutputPrinter;
+use App\Renderer\BaseRenderer;
 
 /**
- * Class BehatHTMLFormatter
+ * Class CustomFormatter
  * @package tests\features\formatter
  */
-class BehatHTMLFormatter implements Formatter
+class CustomFormatter implements Formatter
 {
 
     /**
@@ -207,7 +207,7 @@ class BehatHTMLFormatter implements Formatter
     private $skippedSteps;
 
     /**
-     * BehatHTMLFormatter constructor.
+     * CustomFormatter constructor.
      * @param $name
      * @param $renderers
      * @param $filenames
@@ -228,8 +228,7 @@ class BehatHTMLFormatter implements Formatter
         $base_path,
         $screenshot_support,
         $cli_args
-    )
-    {
+    ) {
         $this->name = $name;
         $this->base_path = $base_path;
         $this->print_args = $print_args;
@@ -247,7 +246,7 @@ class BehatHTMLFormatter implements Formatter
      * Returns an array of event names this subscriber wants to listen to.
      * @return array The event names to listen to
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return array(
             'tester.exercise_completed.before' => 'onBeforeExercise',
@@ -268,7 +267,7 @@ class BehatHTMLFormatter implements Formatter
      * Returns formatter name.
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -276,7 +275,7 @@ class BehatHTMLFormatter implements Formatter
     /**
      * @return string
      */
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return $this->base_path;
     }
@@ -285,16 +284,16 @@ class BehatHTMLFormatter implements Formatter
      * Returns formatter description.
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
-        return "Formatter for teamcity";
+        return "Formatter for CI";
     }
 
     /**
      * Returns formatter output printer.
      * @return OutputPrinter
      */
-    public function getOutputPrinter()
+    public function getOutputPrinter(): object
     {
         return $this->printer;
     }
@@ -314,7 +313,7 @@ class BehatHTMLFormatter implements Formatter
      * @param string $name
      * @return mixed
      */
-    public function getParameter($name)
+    public function getParameter($name): string
     {
         return $this->parameters[$name];
     }
@@ -323,7 +322,7 @@ class BehatHTMLFormatter implements Formatter
      * Returns output path
      * @return String output path
      */
-    public function getOutputPath()
+    public function getOutputPath(): string
     {
         return $this->printer->getOutputPath();
     }
@@ -332,7 +331,7 @@ class BehatHTMLFormatter implements Formatter
      * Returns if it should print the step arguments
      * @return boolean
      */
-    public function getPrintArguments()
+    public function getPrintArguments(): bool
     {
         return $this->print_args;
     }
@@ -341,7 +340,7 @@ class BehatHTMLFormatter implements Formatter
      * Returns if it should print the step outputs
      * @return boolean
      */
-    public function getPrintOutputs()
+    public function getPrintOutputs(): bool
     {
         return $this->print_outp;
     }
@@ -350,12 +349,16 @@ class BehatHTMLFormatter implements Formatter
      * Returns if it should print scenario loop break
      * @return boolean
      */
-    public function getPrintLoopBreak()
+    public function getPrintLoopBreak(): bool
     {
         return $this->loop_break;
     }
 
-    public function getScreenshotSupport()
+    /**
+     * Returns If it should add screenshots support
+     * @return bool
+     */
+    public function getScreenshotSupport(): bool
     {
         return $this->screenshot_support;
     }
@@ -468,7 +471,6 @@ class BehatHTMLFormatter implements Formatter
      */
     public function onAfterExercise(AfterExerciseCompleted $event)
     {
-
         $this->timer->stop();
 
         $print = $this->renderer->renderAfterExercise($this);

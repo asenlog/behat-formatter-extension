@@ -6,11 +6,11 @@
  * Time: 12:50
  */
 
-namespace BehatHTMLFormatter\Printer;
+namespace App\Printer;
 
 use Behat\Testwork\Output\Exception\BadOutputPathException;
 use Behat\Testwork\Output\Printer\OutputPrinter as PrinterInterface;
-use BehatHTMLFormatter\Renderer\BaseRenderer;
+use App\Renderer\BaseRenderer;
 
 class FileOutputPrinter implements PrinterInterface
 {

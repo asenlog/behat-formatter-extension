@@ -6,7 +6,7 @@
  * Time: 14:39
  */
 
-namespace BehatHTMLFormatter\Classes;
+namespace App\Models;
 
 class Scenario
 {

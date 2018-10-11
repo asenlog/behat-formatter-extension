@@ -6,104 +6,106 @@
  * Time: 10:45
  */
 
-namespace BehatHTMLFormatter\Renderer;
+namespace App\Renderer;
+
+use App\Formatter\CustomFormatter;
 
 interface RendererInterface
 {
 
     /**
      * Renders before an exercice.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeExercise($obj);
+    public function renderBeforeExercise(CustomFormatter $obj): string;
 
     /**
      * Renders after an exercice.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterExercise($obj);
+    public function renderAfterExercise(CustomFormatter $obj): string;
 
     /**
      * Renders before a suite.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeSuite($obj);
+    public function renderBeforeSuite(CustomFormatter $obj): string;
 
     /**
      * Renders after a suite.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterSuite($obj);
+    public function renderAfterSuite(CustomFormatter $obj): string;
 
     /**
      * Renders before a feature.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeFeature($obj);
+    public function renderBeforeFeature(CustomFormatter $obj): string;
 
     /**
      * Renders after a feature.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterFeature($obj);
+    public function renderAfterFeature(CustomFormatter $obj): string;
 
     /**
      * Renders before a scenario.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeScenario($obj);
+    public function renderBeforeScenario(CustomFormatter $obj): string;
 
     /**
      * Renders after a scenario.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterScenario($obj);
+    public function renderAfterScenario(CustomFormatter $obj): string;
 
     /**
      * Renders before an outline.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeOutline($obj);
+    public function renderBeforeOutline(CustomFormatter $obj): string;
 
     /**
      * Renders after an outline.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterOutline($obj);
+    public function renderAfterOutline(CustomFormatter $obj): string;
 
     /**
      * Renders before a step.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderBeforeStep($obj);
+    public function renderBeforeStep(CustomFormatter $obj): string;
 
     /**
      * Renders after a step.
-     * @param object : BehatHTMLFormatter object
+     * @param CustomFormatter $obj
      * @return string  : HTML generated
      */
-    public function renderAfterStep($obj);
+    public function renderAfterStep(CustomFormatter $obj): string;
 
     /**
      * To include CSS
      * @return string  : HTML generated
      */
-    public function getCSS();
+    public function getCSS(): string;
 
     /**
      * To include JS
      * @return string  : HTML generated
      */
-    public function getJS();
+    public function getJS(): string;
 }

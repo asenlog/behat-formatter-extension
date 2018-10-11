@@ -1,9 +1,6 @@
 <?php
-/**
- * Base renderer for Behat report
- */
 
-namespace BehatHTMLFormatter\Renderer;
+namespace App\Renderer;
 
 class BaseRenderer
 {
@@ -36,7 +33,11 @@ class BaseRenderer
         //let's load the renderer dynamically
         foreach ($rendererList as $renderer) {
             $this->nameList[] = $renderer;
-            if (in_array($renderer, array('Documentation', 'Report', 'Testrail'))) {
+            if (in_array($renderer, array(
+                self::DOCUMENTATION_RENDERER,
+                self::REPORT_RENDERER,
+                self::TESTRAIL_RENDERER
+            ))) {
                 $className = __NAMESPACE__ . '\\' . $renderer . 'Renderer';
             } else {
                 $className = $renderer;
@@ -49,17 +50,17 @@ class BaseRenderer
      * Return the list of the name of the renderers
      * @return array
      */
-    public function getNameList()
+    public function getNameList(): array
     {
         return $this->nameList;
     }
 
     /**
      * Renders before an exercice.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderBeforeExercise($obj)
+    public function renderBeforeExercise($obj): array
     {
 
         $print = array();
@@ -72,10 +73,10 @@ class BaseRenderer
 
     /**
      * Renders after an exercice.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderAfterExercise($obj)
+    public function renderAfterExercise($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -87,10 +88,10 @@ class BaseRenderer
 
     /**
      * Renders before a suite.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderBeforeSuite($obj)
+    public function renderBeforeSuite($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -102,10 +103,10 @@ class BaseRenderer
 
     /**
      * Renders after a suite.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderAfterSuite($obj)
+    public function renderAfterSuite($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -117,10 +118,10 @@ class BaseRenderer
 
     /**
      * Renders before a feature.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderBeforeFeature($obj)
+    public function renderBeforeFeature($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -132,10 +133,10 @@ class BaseRenderer
 
     /**
      * Renders after a feature.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderAfterFeature($obj)
+    public function renderAfterFeature($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -147,10 +148,10 @@ class BaseRenderer
 
     /**
      * Renders before a scenario.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderBeforeScenario($obj)
+    public function renderBeforeScenario($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -162,10 +163,10 @@ class BaseRenderer
 
     /**
      * Renders after a scenario.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderAfterScenario($obj)
+    public function renderAfterScenario($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -177,10 +178,10 @@ class BaseRenderer
 
     /**
      * Renders before an outline.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderBeforeOutline($obj)
+    public function renderBeforeOutline($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -192,10 +193,10 @@ class BaseRenderer
 
     /**
      * Renders after an outline.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderAfterOutline($obj)
+    public function renderAfterOutline($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -207,10 +208,10 @@ class BaseRenderer
 
     /**
      * Renders before a step.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderBeforeStep($obj)
+    public function renderBeforeStep($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
@@ -222,10 +223,10 @@ class BaseRenderer
 
     /**
      * Renders after a step.
-     * @param object : BehatHTMLFormatter object
+     * @param object : object
      * @return string|array  : HTML generated
      */
-    public function renderAfterStep($obj)
+    public function renderAfterStep($obj): array
     {
         $print = array();
         foreach ($this->rendererList as $name => $renderer) {
